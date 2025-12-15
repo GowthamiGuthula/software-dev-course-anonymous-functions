@@ -75,3 +75,28 @@ const todos = [
   // console.log("All Tasks Completed:", ...);
   // console.log("Sorted Incomplete Tasks:", ...);
   
+const incompleteTasks = todos.filter(function (todo) {
+  return todo.completed === false;
+});
+
+
+const sortedByPriority = [...todos].sort(function (a, b) {
+  return a.priority - b.priority;
+});
+
+const sortedIncompleteTasks = todos
+  .filter(function (todo) {
+    return todo.completed === false;
+  })
+  .sort(function (a, b) {
+    return a.priority - b.priority;
+  });
+
+  const allCompleted = todos.map(function (todo) {
+  return Object.assign({}, todo, { completed: true });
+});
+
+console.log("Incomplete Tasks:", incompleteTasks);
+console.log("Sorted by Priority:", sortedByPriority);
+console.log("Sorted Incomplete Tasks:", sortedIncompleteTasks);
+console.log("All Tasks Completed:", allCompleted);
