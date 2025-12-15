@@ -80,20 +80,19 @@ const incompleteTasks = todos.filter(function (todo) {
 });
 
 
-const sortedByPriority = [...todos].sort(function (a, b) {
+const sortedByPriority = todos.sort(function (a, b) {
   return a.priority - b.priority;
 });
 
-const sortedIncompleteTasks = todos
-  .filter(function (todo) {
-    return todo.completed === false;
-  })
-  .sort(function (a, b) {
+const sortedIncompleteTasks = incompleteTasks.sort(function (a, b) {
     return a.priority - b.priority;
   });
 
   const allCompleted = todos.map(function (todo) {
-  return Object.assign({}, todo, { completed: true });
+  if (todo.completed === false) {
+    todo.completed = true;
+  }
+return todo;
 });
 
 console.log("Incomplete Tasks:", incompleteTasks);
